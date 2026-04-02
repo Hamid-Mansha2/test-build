@@ -1,22 +1,17 @@
 os: linux
 dist: focal
 language: ruby
-rvm:
-  - 4.0.1  # main test Ruby version
 
-# fallback in case RVM can't find it
 before_install:
   - |
-    if ! rvm list rubies | grep -q "ruby-4.0.1"; then
-      echo "Ruby 4.0.1 not available via default RVM, installing manually..."
-      git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-      export PATH="$HOME/.rbenv/bin:$PATH"
-      eval "$(rbenv init -)"
-      git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-      rbenv install 4.0.1
-      rbenv global 4.0.1
-    fi
+    echo "Installing Ruby 4.0.1 via rbenv..."
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    rbenv install 4.0.1
+    rbenv global 4.0.1
 
 script:
-  - ruby -v   # verify the Ruby version
-  - echo "Minimal test script ran successfully."
+  - ruby -v
+  - echo "Minimal Ruby 4.0.1 test completed successfully"
