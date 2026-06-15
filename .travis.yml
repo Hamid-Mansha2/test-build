@@ -1,17 +1,5 @@
-os: linux
-dist: focal
-language: ruby
-
-before_install:
-  - |
-    echo "Installing Ruby 4.0.1 via rbenv..."
-    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-    rbenv install 4.0.1
-    rbenv global 4.0.1
+arch: s390x
 
 script:
-  - ruby -v
-  - echo "Minimal Ruby 4.0.1 test completed successfully"
+  - echo "Testing s390x worker availability"
+  - uname -a
